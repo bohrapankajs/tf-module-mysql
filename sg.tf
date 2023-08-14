@@ -6,16 +6,16 @@ resource "aws_security_group" "allows_mysql" {
 
   ingress {
     description      = "Allow mysql from default VPC"
-    from_port        = 3306
-    to_port          = 3306
+    from_port        = var.RDS_MYSQL_PORT
+    to_port          = var.RDS_MYSQL_PORT
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR]
   }
 
   ingress {
     description      = "Allow mysql from default VPC"
-    from_port        = 3306
-    to_port          = 3306
+    from_port        = var.RDS_MYSQL_PORT
+    to_port          = var.RDS_MYSQL_PORT
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }

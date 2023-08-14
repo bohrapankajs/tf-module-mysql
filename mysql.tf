@@ -1,9 +1,9 @@
 resource "aws_db_instance" "mysql" {
   identifier            = "roboshop-mysql-${var.ENV}" 
-  allocated_storage       = 10
+  allocated_storage       = var.RDS_MYSQL_STORAGE
   engine                  = "mysql"
-  engine_version          = "5.7"
-  instance_class          = "db.t3.micro"
+  engine_version          = var.RDS_MYSQL_ENGINE_VERSION
+  instance_class          = var.RDS_MYSQL_INSTANCE_CLASS
   username                = "admin1"
   password                = "RoboShop1"
   parameter_group_name    = aws_db_parameter_group.mysql-pg.name
